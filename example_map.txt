@@ -1,0 +1,16 @@
+# RoboCup Environment Specifications
+# x is length and y is width of field based on bottom left origin
+#
+# usage:
+# boundary x_min x_max y_min y_max
+# block x y
+#
+# you must specify the boundary of your map using the 'boundary' element
+# and can optionally include obstacles using the 'block' element
+# 
+# All units are in (mm)
+
+boundary 0.0 9000.0 0.0 6000.0
+
+block 100 100  0  300  300  500
+block -300 -300 400 300 300 500

@@ -1,18 +1,38 @@
-# P-RRT_Planer
+# P-RRT_Planner
 
-MEAM 520
-Final Project Code
-Team 10: Zachary Fisher & Michael Woc
+## Summary
 
-Instructions:
-Please open "wrapper.m" and run the code. Some parameters can be changed in the code to vary the environment description. Some commented out sections of the code were used for specific experiments and so this version of the code works for the main focus of our report (dynamic obstacles only).
+This project combines artificial potential fields (APF) and a rapdily-exploring random tree (RRT) in a 2D environment for a holonomic vehicle. The intent of this approach is to utilize RRTs when trapped in local minima that would otherwise be prohibitive for an APF to escape while preserving the APF's ability to nicely handle dynamic obstacles. Roughly speaking, RRT is the global planner and APF is the local planner.
 
+* [Link](FinalProj_Group10_Report.pdf) to the report
+* This project was done as part of the graduate course MEAM 520: Introduction to Robotics with my partner, Michael Woc.
 
+## Results
 
-December 9th, 2019
+The following two figures show the paths of each planner if use separately, with APF on the left and RRT (a weakly optimized version) on the right. The ego vehicle is the blue circle, obstacles are black circles, starting position is a green dot, and goal is a red dot. Obstacles were static in this scenario.
 
-Most of my work was in developing our path-planning, simulation, and experimentation code. We were both partners for the Path Planning and Potential Field Labs and so we each had a strong understanding of that material as well as some mutual leftover code that acted as a guide. I first remade the RRT and Potential Field planners to work in a 2D environment for a holonomic vehicle. This also involved developing a new method of defining and simulating the environment now that we were no longer using the Lynx. It took more effort than expected to simply convert these two planners to our new scenario; in fact, representing them this way revealed some flaws in the algorithms that were not as easily noticeable in the original 3D Lynx simulator provided to us. I made multiple improvements outlined in the report to optimize their performance for the 2D cases we explored. I then worked on improvising a version of a potential field planner that is guided by RRT instead of just following a pseudocode description from a research paper. In addition to the bulk of the programming, I wrote the “Methods” and “Conclusions & Future Work” sections of our final report and created the all graphical images and videos used to represent our experiments.
+<p align="center">
+  <img width="440" src="Images/Exp1/APF_img.jpg"> 
+  <img width="440" src="Images/Exp1/RRT_img.jpg"> 
+</p>
 
-I did not expect to spend as much time and effort on simulating our results as I did. It detracted from focusing purely on the path planning objectives and in the future, I will likely look for open-source resources first to offload this labor. While developing the simulations was tedious and required heavy debugging, the most technically challenging aspect of this project was in creating the logical flow for P-RRT. My first approach was a complete failure as I found I had not generalized the code sufficiently and was moving towards a recursive approach, with which I do not have experience. The issue forced me to restructure the potential field and RRT functions so that they could each be called from a single line. The P-RRT pseudocode in my group’s report outlines nicely the cleanliness of the structure with this approach.
+The following gifs demonstrate P-RRT (Potential guided RRT). The right gif shows the ego vehicle becoming trapped by a static wall and RRT is used to escape. The ego vehicle deviates from the new RRT path as soon as it achieves line-of-sight with the goal.
 
-Path planning has become my favorite topic thus far as a robotics student. My background in mechanical engineering made me nervous at first when I was introduced to the topic due to the role of programming. I really enjoy the logic and methodology behind them and find it interesting to break down a task that would otherwise be straightforward for a human into a programmable description.
+<p align="center">
+  <img width="440" src="Images/Exp 4/prrt_vid.gif"> 
+  <img width="440" src="Images/Exp 5/prrt_vid.gif"> 
+</p> 
+
+## Usage
+
+In Matlab, run: 
+```bash
+wrapper.m
+```
+
+Existing configuration runs an experiment that generates dynamic obstacles. Parameters can be changed to vary the environment and obstacle type.
+  
+## Future
+
+The simulation is fairly crude and was somewhat of a time sink. I would like to look for an open-source tool in the future to enable a greater focus on the path-planning algorithms as well as extend the application to non-holonomic vehicles. 
+

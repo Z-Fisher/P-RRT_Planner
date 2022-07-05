@@ -12,15 +12,15 @@ This project combines artificial potential fields (APF) and a rapdily-exploring 
 The following two figures show the paths of each planner if use separately, with APF on the left and RRT (a weakly optimized version) on the right. The ego vehicle is the blue circle, obstacles are black circles, starting position is a green dot, and goal is a red dot. Obstacles were static in this scenario.
 
 <p align="center">
-  <img width="440" src="Images/Exp1/APF_img.jpg"> 
-  <img width="440" src="Images/Exp1/RRT_img.jpg"> 
+  <img width="410" src="Images/Exp1/APF_img.jpg"> 
+  <img width="410" src="Images/Exp1/RRT_img.jpg"> 
 </p>
 
 The following gifs demonstrate P-RRT (Potential guided RRT). The right gif shows the ego vehicle becoming trapped by a static wall and RRT is used to escape. The ego vehicle deviates from the new RRT path as soon as it achieves line-of-sight with the goal.
 
 <p align="center">
-  <img width="440" src="Images/Exp 4/prrt_vid.gif"> 
-  <img width="440" src="Images/Exp 5/prrt_vid.gif"> 
+  <img width="410" src="Images/Exp 4/prrt_vid.gif"> 
+  <img width="410" src="Images/Exp 5/prrt_vid.gif"> 
 </p> 
 
 ## Usage
